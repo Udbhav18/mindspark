@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from user.models import Person
+from .models import User
 from rest_framework_simplejwt.tokens import RefreshToken
+
 
 
 def get_tokens_for_user(user):
@@ -12,7 +13,7 @@ def get_tokens_for_user(user):
     }
 
 
-class PersonSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Person
+        model = User
         fields = '__all__'
