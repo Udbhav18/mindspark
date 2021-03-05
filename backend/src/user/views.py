@@ -1,20 +1,25 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import User
+from .models import User, Person
 from .serializer import UserSerializer
 from django.contrib.auth import login, authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 
 class PersonViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
-    queryset = User.objects.all()
+    queryset = Person.objects.all()
 
 
-def login(request):
+@csrf_exempt
+def loginView(request):
+    extract = json.load(request)
+    print(extract)
     user = authenticate(
-        request, username=request.POST['email'], password=request.POST['password'])
+        request, email=extract['email'], password=extract['password'])
 
     if user is None:
         return {'error': 'Invalid Credentials.'}
@@ -25,7 +30,6 @@ def login(request):
         'access': str(token.access_token),
         'id': user.id,
         'email': user.email,
-        'username': user.first_name + user.last_name,
-        'isRecruiter': user.person.isRecruiter
+        'isRecruiter': user.isRecruiter
     }
-    return data
+    return JsonResponse(data)
