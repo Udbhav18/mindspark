@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CameraPopup from '../components/Auth/CameraPopup'
+import { useDispatch } from 'react-redux'
 import '../components/Auth/authstyle.css'
 import log from '../components/Auth/img/log.svg'
 import reg from '../components/Auth/img/register.svg'
+import { login } from '../actions/user'
 
 function AuthScreen() {
     const [logEmail, setLogEmail] = useState('')
@@ -14,6 +16,13 @@ function AuthScreen() {
     const [regPassword2, setRegPassword2] = useState('')
 
     const [cameraShow, setCameraShow] = useState(false);
+
+    const dispatch = useDispatch()
+
+    const loginSubmit = (e) => {
+        e.preventDefault()
+        dispatch(login(logEmail, logPassword))
+    }
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -48,7 +57,7 @@ function AuthScreen() {
             <div className="conta">
                 <div className="forms-conta">
                     <div className="signin-signup">
-                        <form action="#" className="sign-in-form">
+                        <form action="#" className="sign-in-form" onSubmit={loginSubmit}>
                             <h2 className="title">Sign in</h2>
                             <div className="input-field">
                                 <i className="fas fa-user"></i>
