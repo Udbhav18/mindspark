@@ -10,8 +10,8 @@ function FooterComponent() {
                     <div className="row gy-4">
                         <div className="col-lg-5 col-md-12 footer-info">
                             <Link to="index.html" className="logo d-flex align-items-center">
-                                <img src="assets/img/logo.png" alt=""></img>
-                                <span>FlexStart</span>
+                                <img src="assets/img/mindspark.svg" alt=""></img>
+                                <span>MindSpark</span>
                             </Link>
                             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
                             <div className="social-links mt-3">
@@ -62,10 +62,10 @@ function FooterComponent() {
 
             <div className="container">
                 <div className="copyright">
-                    &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>MindSpark</span></strong>. All Rights Reserved
                 </div>
                 <div className="credits">
-                    Designed by <Link to="https://bootstrapmade.com/">BootstrapMade</Link>
+                    Designed by NSFW
                 </div>
             </div>
         </footer>
