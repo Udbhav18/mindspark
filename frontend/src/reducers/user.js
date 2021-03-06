@@ -1,4 +1,4 @@
-import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, USER_IMG, USER_UDID, USER_REGISTER_REQUEST, USER_REGISTER_FAIL } from './types'
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, USER_IMG, USER_UDID, USER_REGISTER_REQUEST, USER_REGISTER_FAIL, USER_REGISTER_SUCCESS } from './types'
 
 export const userLoginReducer = (state = {}, action) => {
     const { type, payload } = action
@@ -8,7 +8,7 @@ export const userLoginReducer = (state = {}, action) => {
             return {
                 loading: true,
             }
-        case USER_LOGIN_SUCCESS:
+        case USER_REGISTER_SUCCESS:
         case USER_LOGIN_SUCCESS:
             return {
                 loading: false,

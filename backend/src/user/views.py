@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import User, Person
+from .models import User, PersonDetail
 from .serializer import UserSerializer
 from django.contrib.auth import login, authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -9,16 +9,14 @@ from django.http import JsonResponse
 import json
 import cv2
 import face_recognition
-from PIL import Image
-from io import BytesIO
 import base64
 import numpy as np
 
 
-class PersonViewSet(viewsets.ModelViewSet):
+class PersonDetailViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
-    queryset = Person.objects.all()
+    queryset = PersonDetail.objects.all()
 
 
 @csrf_exempt
@@ -64,7 +62,8 @@ def loginView(request):
         # now compare two encodings
         # optionally pass threshold, by default it is 0.6
 
-        matches = face_recognition.compare_faces(np.array(encodings1), np.array(encodings2))
+        matches = face_recognition.compare_faces(
+            np.array(encodings1), np.array(encodings2))
         # print(matches)
         if len(matches) != 0:
             if matches[0]:
@@ -87,6 +86,25 @@ def loginView(request):
         return JsonResponse({'error': 'Invalid Credentials.'})
 
     login(request, user)
+    token = RefreshToken.for_user(user)
+    data = {
+        'access': str(token.access_token),
+        'id': user.id,
+        'email': user.email,
+        'isRecruiter': user.isRecruiter
+    }
+    return JsonResponse(data)
+
+
+@csrf_exempt
+def signupView(request):
+    extract = json.load(request)
+    user = User(email=extract['email'], auth_img=extract['img'])
+    user.set_password(extract['password'])
+    details = PersonDetail()
+    user.save()
+    details.User = user
+    details.save()
     token = RefreshToken.for_user(user)
     data = {
         'access': str(token.access_token),

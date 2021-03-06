@@ -53,7 +53,7 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     isRecruiter = models.BooleanField(default=False)
-    
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -79,7 +79,7 @@ class User(AbstractBaseUser):
         return self.is_admin
 
 
-class Person(models.Model):
+class PersonDetail(models.Model):
     User = models.OneToOneField(User, on_delete=models.CASCADE)
     date_of_birth = models.DateField(blank=True, null=True)
     avatar = models.ImageField(
@@ -89,9 +89,15 @@ class Person(models.Model):
     location = models.CharField(max_length=200, blank=True, null=True)
     designation = models.CharField(max_length=200, blank=True, null=True)
     skills = ArrayField(models.CharField(
-        max_length=200, blank=True, null=True))
+        max_length=200, blank=True, null=True), blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     github = models.CharField(max_length=200, blank=True, null=True)
-    experience = ArrayField(models.JSONField(blank=True, null=True))
-    education = ArrayField(models.JSONField(blank=True, null=True))
+    experience = ArrayField(models.JSONField(
+        blank=True, null=True), blank=True, null=True)
+    education = ArrayField(models.JSONField(
+        blank=True, null=True), blank=True, null=True)
     social = models.JSONField(blank=True, null=True)
+    UDID = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.User}'
