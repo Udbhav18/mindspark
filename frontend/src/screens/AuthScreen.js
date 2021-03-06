@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CameraPopup from '../components/Auth/CameraPopup'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import '../components/Auth/authstyle.css'
 import log from '../components/Auth/img/log.svg'
 import reg from '../components/Auth/img/register.svg'
 import { login } from '../actions/user'
 
-function AuthScreen() {
+function AuthScreen({history}) {
     const [logEmail, setLogEmail] = useState('')
     const [logPassword, setLogPassword] = useState('')
 
@@ -17,21 +17,36 @@ function AuthScreen() {
 
     const [cameraShow, setCameraShow] = useState(false);
 
+    const [logPasswd, setLogPasswd] = useState(false);
     const dispatch = useDispatch()
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo, img } = userLogin
 
     const loginSubmit = (e) => {
         e.preventDefault()
-        dispatch(login(logEmail, logPassword))
+        if (img) {
+            dispatch(login(logEmail, logPassword, img))
+        }
+        else {
+            dispatch(login(logEmail, logPassword, ''))
+        }
     }
 
     useEffect(() => {
+        if(userInfo){
+            history.push('/dashboard')
+        }
         const script = document.createElement("script");
 
         script.src = "assets/js/auth.js";
         script.async = true;
 
         document.body.appendChild(script);
-    }, [])
+        if (img) {
+            setLogPasswd(true);
+            setLogPassword('');
+        }
+    }, [img, history, userLogin])
 
     const action = (e) => {
         e.preventDefault()
@@ -66,7 +81,7 @@ function AuthScreen() {
                             </div>
                             <div className="input-field">
                                 <i className="fas fa-lock"></i>
-                                <input type="password" placeholder="Password" value={logPassword} onChange={(e) => setLogPassword(e.target.value)} />
+                                <input type="password" placeholder="Password" value={logPassword} disabled={logPasswd} onChange={(e) => setLogPassword(e.target.value)} />
                                 <i className="fas fa-camera" onClick={() => setCameraShow(true)}></i>
                             </div>
                             <input type="submit" value="Login" className="btn solid" />
@@ -96,12 +111,11 @@ function AuthScreen() {
                             <div className="input-field">
                                 <i className="fas fa-lock"></i>
                                 <input type="password" placeholder="Password" value={regPassword} onChange={(e) => setRegPassword(e.target.value)} />
-                                <i className="fas fa-camera"></i>
+                                <i className="fas fa-camera" onClick={() => setCameraShow(true)}></i>
                             </div>
                             <div className="input-field">
                                 <i className="fas fa-lock"></i>
                                 <input type="password" placeholder="Confirm Password" value={regPassword2} onChange={(e) => setRegPassword2(e.target.value)} />
-                                <i className="fas fa-camera"></i>
                             </div>
                             <input type="submit" className="btn" value="Sign up" />
                             <p className="social-text">Or Sign up with social platforms</p>

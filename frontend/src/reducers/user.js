@@ -1,4 +1,4 @@
-import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT } from './types'
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, USER_IMG } from './types'
 
 export const userLoginReducer = (state = {}, action) => {
     const { type, payload } = action
@@ -16,6 +16,11 @@ export const userLoginReducer = (state = {}, action) => {
             return {
                 loading: false,
                 error: payload
+            }
+        case USER_IMG:
+            return {
+                ...state,
+                img: payload
             }
         case USER_LOGOUT:
             return {}

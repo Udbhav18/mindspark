@@ -1,11 +1,14 @@
 import React from 'react'
-import Camera from 'react-html5-camera-photo';
-import 'react-html5-camera-photo/build/css/index.css';
+import Camera from 'react-html5-camera-photo'
+import 'react-html5-camera-photo/build/css/index.css'
 import { Modal, Button } from 'react-bootstrap'
+import { setImg } from '../../actions/user'
+import { useDispatch } from 'react-redux'
 
 function CameraPopup(props) {
+    const dispatch = useDispatch()
     function handleTakePhoto(dataUri) {
-        console.log(dataUri);
+        dispatch(setImg(dataUri))
     }
 
     return (
