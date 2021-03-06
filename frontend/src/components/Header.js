@@ -20,7 +20,7 @@ function Header() {
                 <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
 
                     <Link to="/" className="logo d-flex align-items-center">
-                        <img src="assets/img/mindspark.svg" className='img-fluid'></img>
+                        <img src="assets/img/mindspark.svg" className='img-fluid' alt="mindSpark"></img>
                         <span>MindSpark</span>
                     </Link>
 

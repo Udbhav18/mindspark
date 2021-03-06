@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Message from '../components/Message'
-import { Link } from 'react-router-dom'
 import CameraPopup from '../components/Auth/CameraPopup'
 import UDIDVerify from '../components/Auth/UDIDVerify'
 import { useDispatch, useSelector } from 'react-redux'
