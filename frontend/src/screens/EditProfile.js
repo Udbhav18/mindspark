@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
+import { updateUserDetails } from '../actions/user'
 
 function EditProfile({ history }) {
     const userLogin = useSelector((state) => state.userLogin)
@@ -50,7 +51,8 @@ function EditProfile({ history }) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
+        dispatch(updateUserDetails(formData, history))
     };
 
     return (

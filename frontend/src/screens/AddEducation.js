@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
+import { addUserEducation } from '../actions/user'
 
 function AddEducation({ history }) {
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (!userInfo)
@@ -38,7 +41,8 @@ function AddEducation({ history }) {
     const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        dispatch(addUserEducation(formData, history))
     }
 
     return (

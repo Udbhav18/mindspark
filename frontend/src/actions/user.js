@@ -1,4 +1,4 @@
-import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, USER_IMG, USER_UDID, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_DETAILS_FAIL } from '../reducers/types'
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, USER_IMG, USER_UDID, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_DETAILS_FAIL, USER_DETAILS_UPDATE } from '../reducers/types'
 import axios from 'axios'
 
 export const register = (email, password, img) => async (dispatch) => {
@@ -76,7 +76,7 @@ export const setUdidStatus = (isVerified) => (dispatch) => {
     })
 }
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = () => async (dispatch, getState) => {
     try {
         dispatch({
             type: USER_DETAILS_REQUEST
@@ -91,12 +91,96 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(`/api/users/${id}`, config)
+        const { data } = await axios.get(`/api/users/`, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data
         })
+    } catch (err) {
+        dispatch({ type: USER_DETAILS_FAIL, payload: err.response && err.response.data.message ? err.response.data.message : err.response })
+    }
+}
+
+export const updateUserDetails = (history, formData) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_DETAILS_UPDATE
+        })
+
+        const { userLogin: { userInfo } } = getState()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(`/api/users/update`, formData, config)
+
+        dispatch({
+            type: USER_DETAILS_SUCCESS,
+            payload: data
+        })
+
+        history.push('/dashboard')
+    } catch (err) {
+        dispatch({ type: USER_DETAILS_FAIL, payload: err.response && err.response.data.message ? err.response.data.message : err.response })
+    }
+}
+
+export const addUserExperience = (history, formData) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_DETAILS_UPDATE
+        })
+
+        const { userLogin: { userInfo } } = getState()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(`/api/users/experience`, formData, config)
+
+        dispatch({
+            type: USER_DETAILS_SUCCESS,
+            payload: data
+        })
+
+        history.push('/dashboard')
+    } catch (err) {
+        dispatch({ type: USER_DETAILS_FAIL, payload: err.response && err.response.data.message ? err.response.data.message : err.response })
+    }
+}
+
+export const addUserEducation = (history, formData) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_DETAILS_UPDATE
+        })
+
+        const { userLogin: { userInfo } } = getState()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(`/api/users/education`, formData, config)
+
+        dispatch({
+            type: USER_DETAILS_SUCCESS,
+            payload: data
+        })
+
+        history.push('/dashboard')
     } catch (err) {
         dispatch({ type: USER_DETAILS_FAIL, payload: err.response && err.response.data.message ? err.response.data.message : err.response })
     }
