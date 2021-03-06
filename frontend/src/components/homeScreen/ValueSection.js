@@ -16,7 +16,7 @@ function ValueSection() {
 
                         <div className="col-lg-4">
                             <div className="box" data-aos="fade-up" data-aos-delay="200">
-                                <img src="assets/img/values-1.png" className="img-fluid" alt=""></img>
+                                <img src="assets/img/undraw_speech_to_text_9uir.svg" className="img-fluid" alt=""></img>
                                 <h3>Text To Speech</h3>
                                 <p>Now fill all forms hands free, Speak as you go and we'll write it down all for you!</p>
                             </div>
@@ -24,7 +24,7 @@ function ValueSection() {
 
                         <div className="col-lg-4 mt-4 mt-lg-0">
                             <div className="box" data-aos="fade-up" data-aos-delay="400">
-                                <img src="assets/img/values-2.png" className="img-fluid" alt=""></img>
+                                <img src="assets/img/undraw_visionary_technology_33jy.svg" className="img-fluid" alt=""></img>
                                 <h3>Easy login with FaceID</h3>
                                 <p>No need to remember lengthy passwords, Sign in using FaceId!</p>
                             </div>
