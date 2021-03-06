@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { setUdidStatus } from '../../actions/user'
 import { useDispatch } from 'react-redux'
 
 function UDIDVerify(props) {
+    const [aadhar, setAadhar] = useState('')
+    const [indianState, setIndianState] = useState('')
+    const [district, setDistrict] = useState('')
+
     const dispatch = useDispatch()
     function verifyId(e) {
         e.preventDefault()
@@ -27,12 +31,12 @@ function UDIDVerify(props) {
                     <div className="form-group">
                         <div className="styled">
                             <i className="fas fa-credit-card"></i>
-                            <input type="text" placeholder="Aadhar Number" name="udid" required />
+                            <input type="text" placeholder="Aadhar Number" name="udid" value={aadhar} onChange={(e) => setAadhar(e.target.value)} required />
                         </div>
                         <div className="form-group">
                             <div className="styled">
                                 <i className="fa fa-map-marker"></i>
-                                <select name="state" id="state" class="form-control">
+                                <select name="state" id="state" class="form-control" value={indianState} onChange={(e) => setIndianState(e.target.value)}>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -74,7 +78,7 @@ function UDIDVerify(props) {
                         </div>
                         <div className="styled">
                             <i className="fa fa-map-marker"></i>
-                            <input type="text" placeholder="District" name="district" required />
+                            <input type="text" placeholder="District" name="district" value={district} onChange={(e) => setDistrict(e.target.value)} required />
                         </div>
                     </div>
 
