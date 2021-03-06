@@ -11,7 +11,7 @@ function EditProfile({ history }) {
     useEffect(() => {
         if (!userInfo)
             history.push('/')
-    }, [userInfo])
+    }, [userInfo, history])
 
     const initialState = {
         company: '',

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 import CameraPopup from '../components/Auth/CameraPopup'
+import UDIDVerify from '../components/Auth/UDIDVerify'
 import { useDispatch, useSelector } from 'react-redux'
 import '../components/Auth/authstyle.css'
 import log from '../components/Auth/img/log.svg'
 import reg from '../components/Auth/img/register.svg'
-import { login } from '../actions/user'
+import { login, register } from '../actions/user'
 
 function AuthScreen({ history }) {
     const [logEmail, setLogEmail] = useState('')
@@ -17,11 +18,14 @@ function AuthScreen({ history }) {
     const [regPassword2, setRegPassword2] = useState('')
 
     const [cameraShow, setCameraShow] = useState(false);
+    const [udidShow, setUdidShow] = useState(false);
 
     const [logPasswd, setLogPasswd] = useState(false);
+
     const dispatch = useDispatch()
+
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo, img, error } = userLogin
+    const { userInfo, img, error, udidVerified } = userLogin
 
     const loginSubmit = (e) => {
         e.preventDefault()
@@ -30,6 +34,17 @@ function AuthScreen({ history }) {
         }
         else {
             dispatch(login(logEmail, logPassword, ''))
+        }
+    }
+
+    const registerSubmit = (e) => {
+        e.preventDefault()
+        if (udidVerified) {
+            if (img) {
+                if (regPassword === regPassword2) {
+                    dispatch(register(regEmail, regPassword, img))
+                }
+            }
         }
     }
 
@@ -47,7 +62,7 @@ function AuthScreen({ history }) {
             setLogPasswd(true);
             setLogPassword('');
         }
-    }, [img, history, userLogin])
+    }, [img, history, userInfo])
 
     const action = (e) => {
         e.preventDefault()
@@ -70,6 +85,10 @@ function AuthScreen({ history }) {
                 show={cameraShow}
                 onHide={() => setCameraShow(false)}
             />
+            <UDIDVerify
+                show={udidShow}
+                onHide={() => setUdidShow(false)}
+            />
             <div className="conta">
                 <div className="forms-conta">
                     <div className="signin-signup">
@@ -87,24 +106,11 @@ function AuthScreen({ history }) {
                                 <i className="fas fa-camera" onClick={() => setCameraShow(true)}></i>
                             </div>
                             <input type="submit" value="Login" className="btn solid" />
-                            <p className="social-text">Or Sign in with social platforms</p>
-                            <div className="social-media">
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-facebook-f"></i>
-                                </Link>
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-twitter"></i>
-                                </Link>
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-google"></i>
-                                </Link>
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-linkedin-in"></i>
-                                </Link>
-                            </div>
                         </form>
-                        <form action="#" className="sign-up-form">
+                        <form action="#" className="sign-up-form" onSubmit={registerSubmit}>
                             <h2 className="title">Sign up</h2>
+                            {(regPassword !== regPassword2) && <Message variant='danger'>Passwords do not match!</Message>}
+                            {!img && <p style={{ color: '#FC9D9A' }}>FaceID pending !</p>}
                             <div className="input-field">
                                 <i className="fas fa-envelope"></i>
                                 <input type="email" placeholder="Email" value={regEmail} onChange={(e) => setRegEmail(e.target.value)} />
@@ -119,22 +125,11 @@ function AuthScreen({ history }) {
                                 <i className="fas fa-lock"></i>
                                 <input type="password" placeholder="Confirm Password" value={regPassword2} onChange={(e) => setRegPassword2(e.target.value)} />
                             </div>
-                            <input type="submit" className="btn" value="Sign up" />
-                            <p className="social-text">Or Sign up with social platforms</p>
-                            <div className="social-media">
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-facebook-f"></i>
-                                </Link>
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-twitter"></i>
-                                </Link>
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-google"></i>
-                                </Link>
-                                <Link to="#" className="social-icon">
-                                    <i className="fab fa-linkedin-in"></i>
-                                </Link>
+                            <div onClick={() => setUdidShow(true)}>
+                                <i className="fas fa-credit-card my-3" style={{ fontSize: '1.2rem' }}></i> Verify UDID Number
                             </div>
+                            {!udidVerified && <p style={{ color: '#FC9D9A' }}>(pending!)</p>}
+                            <input type="submit" className="btn" value="Sign up" />
                         </form>
                     </div>
                 </div>

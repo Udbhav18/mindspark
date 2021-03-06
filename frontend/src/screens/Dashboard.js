@@ -11,7 +11,7 @@ function Dashboard({ history }) {
     useEffect(() => {
         if (!userInfo)
             history.push('/')
-    }, [userInfo])
+    }, [userInfo, history])
 
     return (
         <>
