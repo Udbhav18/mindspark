@@ -8,6 +8,7 @@ import '../components/Auth/authstyle.css'
 import log from '../components/Auth/img/log.svg'
 import reg from '../components/Auth/img/register.svg'
 import { login, register } from '../actions/user'
+import Spinner from '../components/Spinner'
 
 function AuthScreen({ history }) {
     const [logEmail, setLogEmail] = useState('')
@@ -25,7 +26,7 @@ function AuthScreen({ history }) {
     const dispatch = useDispatch()
 
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo, img, error, udidVerified } = userLogin
+    const { userInfo, img, error, udidVerified, loading } = userLogin
 
     const loginSubmit = (e) => {
         e.preventDefault()
@@ -95,6 +96,7 @@ function AuthScreen({ history }) {
                         <form action="#" className="sign-in-form" onSubmit={loginSubmit}>
                             <h2 className="title">Sign in</h2>
                             {error && <Message>Invalid User Credentials!</Message>}
+                            {loading && <Spinner />}
                             <div className="input-field">
                                 <i className="fas fa-user"></i>
                                 <input type="text" placeholder="Username" value={logEmail} onChange={(e) => setLogEmail(e.target.value)} />
@@ -111,6 +113,7 @@ function AuthScreen({ history }) {
                             <h2 className="title">Sign up</h2>
                             {(regPassword !== regPassword2) && <Message variant='danger'>Passwords do not match!</Message>}
                             {!img && <p style={{ color: '#FC9D9A' }}>FaceID pending !</p>}
+                            {loading && <Spinner />}
                             <div className="input-field">
                                 <i className="fas fa-envelope"></i>
                                 <input type="email" placeholder="Email" value={regEmail} onChange={(e) => setRegEmail(e.target.value)} />
