@@ -248,3 +248,6 @@ dist
 # package-lock
 package-lock.json
 
+# Selenium webdriver logs
+geckodriver.log
+
