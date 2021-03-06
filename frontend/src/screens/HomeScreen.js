@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ValueSection from '../components/homeScreen/ValueSection'
 import CountSection from '../components/homeScreen/CountSection'
-import ServicesSection from '../components/homeScreen/ServicesSection'
-import PricingSection from '../components/homeScreen/PricingSection'
 import TestimonialsSection from '../components/homeScreen/TestimonialsSection'
 import TeamSection from '../components/homeScreen/TeamSection'
 import ClientSection from '../components/homeScreen/ClientSection'
@@ -41,8 +39,6 @@ function HomeScreen() {
             <main id="main">
                 <ValueSection />
                 <CountSection />
-                <ServicesSection />
-                <PricingSection />
                 <TestimonialsSection />
                 <TeamSection />
                 <ClientSection />

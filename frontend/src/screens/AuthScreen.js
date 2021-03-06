@@ -13,6 +13,7 @@ function AuthScreen({ history }) {
     const [logEmail, setLogEmail] = useState('')
     const [logPassword, setLogPassword] = useState('')
 
+    const [regName, setRegName] = useState('')
     const [regEmail, setRegEmail] = useState('')
     const [regPassword, setRegPassword] = useState('')
     const [regPassword2, setRegPassword2] = useState('')
@@ -42,7 +43,7 @@ function AuthScreen({ history }) {
         if (udidVerified) {
             if (img) {
                 if (regPassword === regPassword2) {
-                    dispatch(register(regEmail, regPassword, img))
+                    dispatch(register(regName, regEmail, regPassword, img))
                 }
             }
         }
@@ -113,6 +114,11 @@ function AuthScreen({ history }) {
                             {(regPassword !== regPassword2) && <Message variant='danger'>Passwords do not match!</Message>}
                             {!img && <p style={{ color: '#FC9D9A' }}>FaceID pending !</p>}
                             {loading && <Spinner />}
+                            <div className="input-field">
+                                <i className="fas fa-user"></i>
+                                <input type="text" placeholder="Name" value={regName} onChange={(e) => setRegName(e.target.value)} />
+                                <i className="fas fa-microphone" id="RegName" onClick={(e) => action(e)}></i>
+                            </div>
                             <div className="input-field">
                                 <i className="fas fa-envelope"></i>
                                 <input type="email" placeholder="Email" value={regEmail} onChange={(e) => setRegEmail(e.target.value)} />

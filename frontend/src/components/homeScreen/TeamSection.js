@@ -27,8 +27,6 @@ function TeamSection() {
                             </div>
                             <div className="member-info">
                                 <h4>Udbhav Somani</h4>
-                                <span>Chief Executive Officer</span>
-                                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
                             </div>
                         </div>
                     </div>
@@ -46,8 +44,6 @@ function TeamSection() {
                             </div>
                             <div className="member-info">
                                 <h4>Neelaksh Tayal</h4>
-                                <span>Product Manager</span>
-                                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
                             </div>
                         </div>
                     </div>
@@ -65,8 +61,6 @@ function TeamSection() {
                             </div>
                             <div className="member-info">
                                 <h4>Mihir Kumar Roy</h4>
-                                <span>CTO</span>
-                                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
                             </div>
                         </div>
                     </div>
@@ -84,8 +78,6 @@ function TeamSection() {
                             </div>
                             <div className="member-info">
                                 <h4>Aarya Pathania</h4>
-                                <span>Accountant</span>
-                                <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>
                             </div>
                         </div>
                     </div>
@@ -103,8 +95,6 @@ function TeamSection() {
                             </div>
                             <div className="member-info">
                                 <h4>Rishabh Sood</h4>
-                                <span>Accountant</span>
-                                <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>
                             </div>
                         </div>
                     </div>

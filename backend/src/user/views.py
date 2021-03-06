@@ -19,9 +19,11 @@ class PersonDetailViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = PersonDetail.objects.all()
 
+
 @csrf_exempt
 def user_profile(request):
-    return JsonResponse(UserSerializer(request.user).data)
+    return JsonResponse(PersonSerializer(request.user.persondetail).data)
+
 
 @csrf_exempt
 def loginView(request):
@@ -71,9 +73,11 @@ def loginView(request):
         # print(matches)
         if len(matches) != 0:
             if matches[0]:
-                login(request, checkuser, backend='django.contrib.auth.backends.ModelBackend')
+                login(request, checkuser,
+                      backend='django.contrib.auth.backends.ModelBackend')
                 token = RefreshToken.for_user(checkuser)
                 data = {
+                    'name': checkuser.name,
                     'message': 'Welcome ' + checkuser.email,
                     'access': str(token.access_token),
                     'id': checkuser.id,
@@ -92,6 +96,7 @@ def loginView(request):
     login(request, user)
     token = RefreshToken.for_user(user)
     data = {
+        'name': user.name,
         'access': str(token.access_token),
         'id': user.id,
         'email': user.email,
@@ -103,7 +108,8 @@ def loginView(request):
 @csrf_exempt
 def signupView(request):
     extract = json.load(request)
-    user = User(email=extract['email'], auth_img=extract['img'])
+    user = User(email=extract['email'],
+                auth_img=extract['img'], name=extract['name'])
     user.set_password(extract['password'])
     details = PersonDetail()
     user.save()
@@ -111,6 +117,7 @@ def signupView(request):
     details.save()
     token = RefreshToken.for_user(user)
     data = {
+        'name': user.name,
         'access': str(token.access_token),
         'id': user.id,
         'email': user.email,
@@ -122,7 +129,8 @@ def signupView(request):
 @csrf_exempt
 def verifyUDID(request):
     extract = json.load(request)
-    check = in_disability_db(aadhaar=extract['aadhaar'], district=extract['district'], state=extract['indianState'])
+    check = in_disability_db(
+        aadhaar=extract['aadhaar'], district=extract['district'], state=extract['indianState'])
     # print(check)
     return JsonResponse({'check': check})
 
@@ -132,13 +140,13 @@ def updateProfile(request):
     extract = json.load(request)
     print(extract)
     details = request.user.persondetail
-    details.company=extract['company']
-    details.website=extract['website']
-    details.bio=extract['bio']
-    details.location=extract['location']
-    details.designation=extract['status']
-    details.skills=extract['skills'].split(',')
-    details.social={
+    details.company = extract['company']
+    details.website = extract['website']
+    details.bio = extract['bio']
+    details.location = extract['location']
+    details.designation = extract['status']
+    details.skills = extract['skills'].split(',')
+    details.social = {
         'twitter': extract['twitter'],
         'facebook': extract['facebook'],
         'linkedin': extract['linkedin'],
@@ -159,6 +167,7 @@ def updateProfile(request):
     }
     return JsonResponse(data)
 
+
 @csrf_exempt
 def add_experience(request):
     user = request.user.persondetail
@@ -171,6 +180,7 @@ def add_experience(request):
 
     return JsonResponse(PersonSerializer(user).data)
 
+
 @csrf_exempt
 def add_education(request):
     user = request.user.persondetail
@@ -182,4 +192,3 @@ def add_education(request):
     user.save()
 
     return JsonResponse(PersonSerializer(user).data)
-

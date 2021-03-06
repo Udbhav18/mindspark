@@ -27,7 +27,7 @@ function Header() {
                     <nav id="navbar" className="navbar">
                         {userInfo ? (
                             <ul>
-                                <li><Link className="nav-link scrollto"><i className="fas fa-user" style={{ marginRight: '0.5rem' }}></i> {userInfo.email}</Link></li>
+                                <li><Link className="nav-link scrollto"><i className="fas fa-user" style={{ marginRight: '0.5rem' }}></i> {userInfo.name}</Link></li>
                                 <li><Link className="nav-link scrollto" to="/dashboard">Dashboard</Link></li>
                                 <li><Link className="nav-link scrollto" to="/profile">Profile</Link></li>
                                 <li><Link className="nav-link scrollto" to="/inbox">Inbox</Link></li>

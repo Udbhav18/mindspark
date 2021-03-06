@@ -1,7 +1,7 @@
 import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAIL, USER_LOGOUT, USER_IMG, USER_UDID, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_DETAILS_FAIL, USER_DETAILS_UPDATE } from '../reducers/types'
 import axios from 'axios'
 
-export const register = (email, password, img) => async (dispatch) => {
+export const register = (name, email, password, img) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST
@@ -13,7 +13,7 @@ export const register = (email, password, img) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('/signup/', { email, password, img }, config)
+        const { data } = await axios.post('/signup/', { name, email, password, img }, config)
         if (data.error) {
             throw new Error(data.error);
         }
@@ -91,7 +91,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(`/api/users/`, config)
+        const { data } = await axios.get(`profile/`, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,

@@ -11,8 +11,8 @@ function CountSection() {
                         <div className="count-box">
                             <i className="bi bi-emoji-smile"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" className="purecounter"></span>
-                                <p>Happy Clients</p>
+                                <span data-purecounter-start="0" data-purecounter-end="2000" data-purecounter-duration="1" className="purecounter"></span>
+                                <p>Users</p>
                             </div>
                         </div>
                     </div>
@@ -21,8 +21,8 @@ function CountSection() {
                         <div className="count-box">
                             <i className="bi bi-journal-richtext" style={{ color: '#ee6c20' }}></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" className="purecounter"></span>
-                                <p>Projects</p>
+                                <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" className="purecounter"></span>
+                                <p>Recruiters</p>
                             </div>
                         </div>
                     </div>
@@ -31,8 +31,8 @@ function CountSection() {
                         <div className="count-box">
                             <i className="bi bi-headset" style={{ color: '#15be56' }}></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" className="purecounter"></span>
-                                <p>Hours Of Support</p>
+                                <span data-purecounter-start="0" data-purecounter-end="36" data-purecounter-duration="1" className="purecounter"></span>
+                                <p>Hours Of Development</p>
                             </div>
                         </div>
                     </div>
@@ -41,8 +41,8 @@ function CountSection() {
                         <div className="count-box">
                             <i className="bi bi-people" style={{ color: '#bb0852' }}></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" className="purecounter"></span>
-                                <p>Hard Workers</p>
+                                <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" className="purecounter"></span>
+                                <p>Team Members</p>
                             </div>
                         </div>
                     </div>

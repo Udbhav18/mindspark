@@ -12,7 +12,8 @@ class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -64,7 +65,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'is_admin')
     list_filter = ('is_admin',)
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'password', 'name')}),
         ('Personal info', {'fields': ('auth_img',)}),
         ('Permissions', {'fields': ('is_admin', 'isRecruiter')}),
     )
@@ -87,4 +88,3 @@ admin.site.register(User, UserAdmin)
 # unregister the Group model from admin.
 admin.site.unregister(Group)
 admin.site.register(PersonDetail)
-

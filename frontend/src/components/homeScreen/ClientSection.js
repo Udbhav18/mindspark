@@ -7,8 +7,8 @@ function ClientSection() {
             <div className="container" data-aos="fade-up">
 
                 <header className="section-header">
-                    <h2>Our Clients</h2>
-                    <p>Temporibus omnis officia</p>
+                    <h2>Our Recruiters</h2>
+                    <p>Recruiting 100s every Month!</p>
                 </header>
 
                 <div className="clients-slider swiper-container">

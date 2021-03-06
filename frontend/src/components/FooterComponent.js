@@ -13,7 +13,7 @@ function FooterComponent() {
                                 <img src="assets/img/mindspark.svg" alt=""></img>
                                 <span>MindSpark</span>
                             </Link>
-                            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                            <p>A platform for the specially abled to move up the corporate ladder. A professional network solely designed to ease the process of job applications for the handicapped.</p>
                             <div className="social-links mt-3">
                                 <Link to="#" className="twitter"><i className="bi bi-twitter"></i></Link>
                                 <Link to="#" className="facebook"><i className="bi bi-facebook"></i></Link>
@@ -23,35 +23,19 @@ function FooterComponent() {
                         </div>
 
                         <div className="col-lg-2 col-6 footer-links">
-                            <h4>Useful Links</h4>
-                            <ul>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Home</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">About us</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Services</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Terms of service</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Privacy policy</Link></li>
-                            </ul>
                         </div>
 
                         <div className="col-lg-2 col-6 footer-links">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Web Design</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Web Development</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Product Management</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Marketing</Link></li>
-                                <li><i className="bi bi-chevron-right"></i> <Link to="#">Graphic Design</Link></li>
-                            </ul>
                         </div>
 
                         <div className="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                             <h4>Contact Us</h4>
                             <p>
-                                A108 Adam Street <br />
+                                MindSpark Colony <br />
                                 New York, NY 535022<br />
                                 United States <br /><br />
-                                <strong>Phone:</strong> +1 5589 55488 55<br />
-                                <strong>Email:</strong> info@example.com<br />
+                                <strong>Phone:</strong> +91 XXXXXXXXXX <br />
+                                <strong>Email:</strong> mindspark3077@gmail.com <br />
                             </p>
 
                         </div>
