@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
@@ -8,6 +8,8 @@ import { updateUserDetails } from '../actions/user'
 function EditProfile({ history }) {
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+    
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (!userInfo)

@@ -122,3 +122,37 @@ def verifyUDID(request):
     check = in_disability_db(aadhaar=extract['aadhaar'], district=extract['district'], state=extract['indianState'])
     # print(check)
     return JsonResponse({'check': check})
+
+
+@csrf_exempt
+def updateProfile(request):
+    extract = json.load(request)
+    print(extract)
+    details = request.user.persondetail
+    details.company=extract['company']
+    details.designation=extract['status']
+    details.skills=extract['skills'].split(',')
+    details.social={
+        'twitter': extract['twitter'],
+        'facebook': extract['facebook'],
+        'linkedin': extract['linkedin'],
+        'youtube': extract['youtube'],
+        'instagram': extract['instagram']
+    }
+    details.save()
+    print(details)
+    data = {
+        'company': details.company,
+        'website': details.website,
+        'location': details.location,
+        'status': details.designation,
+        'skills': details.skills,
+        'githubusername': details.github,
+        'bio': details.bio,
+        'twitter': details.social.twitter,
+        'facebook': details.social.facebook,
+        'linkedin': details.social.linkedin,
+        'youtube': details.social.youtube,
+        'instagram': details.social.instagram
+    }
+    return JsonResponse(data)

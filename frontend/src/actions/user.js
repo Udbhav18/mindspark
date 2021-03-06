@@ -102,7 +102,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
     }
 }
 
-export const updateUserDetails = (history, formData) => async (dispatch, getState) => {
+export const updateUserDetails = (formData, history) => async (dispatch, getState) => {
     try {
         dispatch({
             type: USER_DETAILS_UPDATE
@@ -117,7 +117,7 @@ export const updateUserDetails = (history, formData) => async (dispatch, getStat
             }
         }
 
-        const { data } = await axios.post(`/api/users/update`, formData, config)
+        const { data } = await axios.post(`update/`, formData, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -130,7 +130,7 @@ export const updateUserDetails = (history, formData) => async (dispatch, getStat
     }
 }
 
-export const addUserExperience = (history, formData) => async (dispatch, getState) => {
+export const addUserExperience = (formData, history) => async (dispatch, getState) => {
     try {
         dispatch({
             type: USER_DETAILS_UPDATE
@@ -158,7 +158,7 @@ export const addUserExperience = (history, formData) => async (dispatch, getStat
     }
 }
 
-export const addUserEducation = (history, formData) => async (dispatch, getState) => {
+export const addUserEducation = (formData, history) => async (dispatch, getState) => {
     try {
         dispatch({
             type: USER_DETAILS_UPDATE
