@@ -2,16 +2,24 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { setUdidStatus } from '../../actions/user'
 import { useDispatch } from 'react-redux'
+import axios from 'axios'
 
 function UDIDVerify(props) {
-    const [aadhar, setAadhar] = useState('')
+    const [aadhaar, setAadhaar] = useState('')
     const [indianState, setIndianState] = useState('')
     const [district, setDistrict] = useState('')
 
     const dispatch = useDispatch()
-    function verifyId(e) {
+    const verifyId = async (e) => {
         e.preventDefault()
-        dispatch(setUdidStatus(true))
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post('/verifyUDID/', { aadhaar, indianState, district }, config)
+        dispatch(setUdidStatus(data.check))
     }
 
     return (
@@ -31,7 +39,7 @@ function UDIDVerify(props) {
                     <div className="form-group">
                         <div className="styled">
                             <i className="fas fa-credit-card"></i>
-                            <input type="text" placeholder="Aadhar Number" name="udid" value={aadhar} onChange={(e) => setAadhar(e.target.value)} required />
+                            <input type="text" placeholder="aadhaar Number" name="udid" value={aadhaar} onChange={(e) => setAadhaar(e.target.value)} required />
                         </div>
                         <div className="form-group">
                             <div className="styled">

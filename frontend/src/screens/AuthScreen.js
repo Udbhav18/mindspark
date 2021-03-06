@@ -75,7 +75,7 @@ function AuthScreen({ history }) {
         recognition.onresult = function (event) {
             // console.log(event);
             // document.getElementById(`i_${e.target.id}`).value = event.results[0][0].transcript;
-            eval(`set${e.target.id}('${event.results[0][0].transcript}')`)
+            eval(`set${e.target.id}('${event.results[0][0].transcript.replace(/\s/g, '')}')`)
         }
         recognition.start();
     }
