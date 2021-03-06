@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import User, PersonDetail
-from .serializer import UserSerializer
+from .serializer import UserSerializer, PersonSerializer
 from django.contrib.auth import login, authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.views.decorators.csrf import csrf_exempt
@@ -155,3 +155,28 @@ def updateProfile(request):
         'social': details.social,
     }
     return JsonResponse(data)
+
+@csrf_exempt
+def add_experience(request):
+    user = request.user.persondetail
+    experiences = user.experience
+
+    new_experience = json.load(request)
+    experiences.append(new_experience)
+    user.experience = experiences
+    user.save()
+
+    return JsonResponse(PersonSerializer(user).data)
+
+@csrf_exempt
+def add_education(request):
+    user = request.user.persondetail
+    education = user.education
+
+    new_education = json.load(request)
+    education.append(new_education)
+    user.education = education
+    user.save()
+
+    return JsonResponse(PersonSerializer(user).data)
+

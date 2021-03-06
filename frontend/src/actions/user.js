@@ -145,7 +145,7 @@ export const addUserExperience = (formData, history) => async (dispatch, getStat
             }
         }
 
-        const { data } = await axios.post(`/api/users/experience`, formData, config)
+        const { data } = await axios.post(`/addExperience/`, formData, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -173,7 +173,7 @@ export const addUserEducation = (formData, history) => async (dispatch, getState
             }
         }
 
-        const { data } = await axios.post(`/api/users/education`, formData, config)
+        const { data } = await axios.post(`/addEducation/`, formData, config)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
