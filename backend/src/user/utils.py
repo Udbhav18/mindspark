@@ -6,14 +6,15 @@ from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 
 opts = Options()
-# opts.set_headless()
-# assert opts.headless  # Operating in headless mode
+opts.set_headless()
+assert opts.headless  # Operating in headless mode
 
 STATE = 'UTTAR PRADESH'.upper()
 DISTRICT = 'LUCKNOW'.upper()
 AADHAAR = '000000000000'
 
 def in_disability_db(state: str, district: str, aadhaar: str):
+    state, district = state.upper(), district.upper()
     browser = driver(options=opts)
     browser.get('http://www.swavlambancard.gov.in/pwd/searchapplication')
 

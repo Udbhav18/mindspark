@@ -44,6 +44,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
+    name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
@@ -89,6 +90,8 @@ class PersonDetail(models.Model):
     location = models.CharField(max_length=200, blank=True, null=True)
     designation = models.CharField(max_length=200, blank=True, null=True)
     skills = ArrayField(models.CharField(
+        max_length=200, blank=True, null=True), blank=True, null=True)
+    disablity = ArrayField(models.CharField(
         max_length=200, blank=True, null=True), blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     github = models.CharField(max_length=200, blank=True, null=True)

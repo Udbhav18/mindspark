@@ -11,6 +11,7 @@ import cv2
 import face_recognition
 import base64
 import numpy as np
+from .utils import in_disability_db
 
 
 class PersonDetailViewSet(viewsets.ModelViewSet):
@@ -113,3 +114,11 @@ def signupView(request):
         'isRecruiter': user.isRecruiter
     }
     return JsonResponse(data)
+
+
+@csrf_exempt
+def verifyUDID(request):
+    extract = json.load(request)
+    check = in_disability_db(aadhaar=extract['aadhaar'], district=extract['district'], state=extract['indianState'])
+    # print(check)
+    return JsonResponse({'check': check})
