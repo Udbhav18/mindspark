@@ -26,4 +26,7 @@ urlpatterns = [
     path('addExperience/', add_experience, name='add_experience'),
     path('addEducation/', add_education, name='add_education'),
     path('profile/', user_profile, name='profile'),
+    path('profiles/', PersonDetailViewSet.as_view({
+        'get': 'list'
+        }), name='All Profiles'),
 ]

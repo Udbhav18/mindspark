@@ -16,7 +16,7 @@ from .utils import in_disability_db
 
 class PersonDetailViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    serializer_class = UserSerializer
+    serializer_class = PersonSerializer
     queryset = PersonDetail.objects.all()
 
 

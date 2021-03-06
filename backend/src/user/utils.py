@@ -32,7 +32,7 @@ def in_disability_db(state: str, district: str, aadhaar: str):
         form_field.send_keys(value)
 
     for dropdown, value in dropdown_replies.items():
-        while True:
+        for i in range(10):
             try:
                 dropdown_field = Select(browser.find_element_by_id(dropdown))
                 dropdown_field.select_by_visible_text(value)
