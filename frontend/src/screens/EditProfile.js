@@ -8,8 +8,6 @@ import { updateUserDetails } from '../actions/user'
 function EditProfile({ history }) {
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
-    
-    const dispatch = useDispatch()
 
     const dispatch = useDispatch()
 
