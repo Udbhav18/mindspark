@@ -130,6 +130,9 @@ def updateProfile(request):
     print(extract)
     details = request.user.persondetail
     details.company=extract['company']
+    details.website=extract['website']
+    details.bio=extract['bio']
+    details.location=extract['location']
     details.designation=extract['status']
     details.skills=extract['skills'].split(',')
     details.social={
@@ -149,10 +152,6 @@ def updateProfile(request):
         'skills': details.skills,
         'githubusername': details.github,
         'bio': details.bio,
-        'twitter': details.social.twitter,
-        'facebook': details.social.facebook,
-        'linkedin': details.social.linkedin,
-        'youtube': details.social.youtube,
-        'instagram': details.social.instagram
+        'social': details.social,
     }
     return JsonResponse(data)
