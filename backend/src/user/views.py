@@ -19,6 +19,9 @@ class PersonDetailViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = PersonDetail.objects.all()
 
+@csrf_exempt
+def user_profile(request):
+    return JsonResponse(UserSerializer(request.user).data)
 
 @csrf_exempt
 def loginView(request):

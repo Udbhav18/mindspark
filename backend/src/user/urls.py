@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
 from numpy import add
-from .views import PersonDetailViewSet, add_education, add_experience, signupView, verifyUDID, updateProfile
+from .views import PersonDetailViewSet, add_education, add_experience, signupView, verifyUDID, updateProfile, user_profile
 from rest_framework.routers import DefaultRouter
 from django.contrib.auth.views import LogoutView
 from rest_framework_simplejwt.views import (
@@ -25,4 +25,5 @@ urlpatterns = [
     # path('logoutall/', LogoutAllView.as_view(), name='auth_logout_all'),
     path('addExperience/', add_experience, name='add_experience'),
     path('addEducation/', add_education, name='add_education'),
+    path('profile/', user_profile, name='profile'),
 ]
