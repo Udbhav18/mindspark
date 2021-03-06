@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
 import '../components/profileScreen/style.css'
 
-function ProfileScreen() {
+function ProfileScreen({ history }) {
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    useEffect(() => {
+        if (!userInfo)
+            history.push('/')
+    }, [userInfo])
+
     return (
         <>
             <Header />

@@ -44,7 +44,6 @@ function HomeScreen() {
                 <CountSection />
                 <ServicesSection />
                 <PricingSection />
-                <FAQSection />
                 <TestimonialsSection />
                 <TeamSection />
                 <ClientSection />

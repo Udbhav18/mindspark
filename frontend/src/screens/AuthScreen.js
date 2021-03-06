@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 import CameraPopup from '../components/Auth/CameraPopup'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +8,7 @@ import log from '../components/Auth/img/log.svg'
 import reg from '../components/Auth/img/register.svg'
 import { login } from '../actions/user'
 
-function AuthScreen({history}) {
+function AuthScreen({ history }) {
     const [logEmail, setLogEmail] = useState('')
     const [logPassword, setLogPassword] = useState('')
 
@@ -20,7 +21,7 @@ function AuthScreen({history}) {
     const [logPasswd, setLogPasswd] = useState(false);
     const dispatch = useDispatch()
     const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo, img } = userLogin
+    const { userInfo, img, error } = userLogin
 
     const loginSubmit = (e) => {
         e.preventDefault()
@@ -33,7 +34,7 @@ function AuthScreen({history}) {
     }
 
     useEffect(() => {
-        if(userInfo){
+        if (userInfo) {
             history.push('/dashboard')
         }
         const script = document.createElement("script");
@@ -74,6 +75,7 @@ function AuthScreen({history}) {
                     <div className="signin-signup">
                         <form action="#" className="sign-in-form" onSubmit={loginSubmit}>
                             <h2 className="title">Sign in</h2>
+                            {error && <Message>Invalid User Credentials!</Message>}
                             <div className="input-field">
                                 <i className="fas fa-user"></i>
                                 <input type="text" placeholder="Username" value={logEmail} onChange={(e) => setLogEmail(e.target.value)} />

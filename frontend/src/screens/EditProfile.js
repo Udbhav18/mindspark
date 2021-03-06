@@ -1,9 +1,18 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
 
-function EditProfile() {
+function EditProfile({ history }) {
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    useEffect(() => {
+        if (!userInfo)
+            history.push('/')
+    }, [userInfo])
+
     const initialState = {
         company: '',
         website: '',

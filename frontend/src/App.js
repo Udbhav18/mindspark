@@ -17,7 +17,7 @@ function App() {
       <Route exact path='/editProfile' component={EditProfile} />
       <Route exact path='/addEducation' component={AddEducation} />
       <Route exact path='/addExperience' component={AddExperience} />
-      <Route exact path='/chatScreen' component={ChatScreen} />
+      <Route exact path='/inbox' component={ChatScreen} />
       <Route exact path='/login' component={AuthScreen} />
       <Route exact path='/profile' component={ProfileScreen} />
     </Router>

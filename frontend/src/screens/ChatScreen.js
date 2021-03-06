@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import './chatStyle.css'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
 
-function ChatScreen() {
+function ChatScreen({ history }) {
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    useEffect(() => {
+        if (!userInfo)
+            history.push('/')
+    }, [userInfo])
+
     return (
         <>
             <Header />

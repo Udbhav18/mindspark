@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Header from '../components/Header'
 import FooterComponent from '../components/FooterComponent'
 
-function Dashboard() {
+function Dashboard({ history }) {
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    useEffect(() => {
+        if (!userInfo)
+            history.push('/')
+    }, [userInfo])
+
     return (
         <>
             <Header />
