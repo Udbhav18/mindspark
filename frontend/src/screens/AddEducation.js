@@ -11,7 +11,7 @@ function AddEducation({ history }) {
     useEffect(() => {
         if (!userInfo)
             history.push('/')
-    }, [userInfo])
+    }, [userInfo, history])
 
     const [formData, setFormData] = useState({
         school: '',
