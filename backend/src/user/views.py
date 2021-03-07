@@ -12,12 +12,13 @@ import face_recognition
 import base64
 import numpy as np
 from .utils import in_disability_db
-
+from django.db.models import F
 
 class PersonDetailViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = PersonSerializer
-    queryset = PersonDetail.objects.all()
+    queryset = PersonDetail.objects.select_related('User').annotate(name=F('User__name'))
+
 
 
 @csrf_exempt
