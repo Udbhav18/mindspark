@@ -22,7 +22,6 @@ function Dashboard({ history }) {
 
     const userDetails = useSelector((state) => state.userDetails)
     const { user, loading } = userDetails
-    const { education, experience } = user
 
     return (
         <>
@@ -42,7 +41,7 @@ function Dashboard({ history }) {
                 </section>
 
                 <section class="hero inner-page" style={{ height: '100%' }}>
-                    {loading ? <Spinner /> : (
+                    {loading ? <Spinner /> : userInfo && user && (
                         <div class="container">
                             <h1 style={{ fontSize: '2.5rem' }}>{userInfo.name}</h1>
                             <div class="dash-buttons my-3">
@@ -63,7 +62,7 @@ function Dashboard({ history }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {experience && experience.map(exp => (
+                                    {user.experience && user.experience.map(exp => (
                                         <tr key={exp._id}>
                                             <td>{exp.title}</td>
                                             <td className="hide-sm">{exp.company}</td>
@@ -87,7 +86,7 @@ function Dashboard({ history }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {education && education.map(edu => (
+                                    {user.education && user.education.map(edu => (
                                         <tr>
                                             <td>{edu.school}</td>
                                             <td className="hide-sm">{edu.degree}</td>

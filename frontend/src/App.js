@@ -8,11 +8,13 @@ import EditProfile from './screens/EditProfile'
 import AddEducation from './screens/AddEducation'
 import AddExperience from './screens/AddExperience'
 import ChatScreen from './screens/ChatScreen'
+import DefaultScreen from './screens/template'
 
 function App() {
   return (
     <Router>
       <Route exact path='/' component={HomeScreen} />
+      <Route exact path='/try' component={DefaultScreen} />
       <Route exact path='/dashboard' component={Dashboard} />
       <Route exact path='/editProfile' component={EditProfile} />
       <Route exact path='/addEducation' component={AddEducation} />

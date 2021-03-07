@@ -22,13 +22,12 @@ function ProfileScreen({ history }) {
 
     const userDetails = useSelector((state) => state.userDetails)
     const { user, loading } = userDetails
-    const { designation, company, location, website, social, bio, skills, experience, education } = user
 
     return (
         <>
             <Header />
             <div className="contai">
-                {loading ? <Spinner /> : (
+                {loading ? <Spinner /> : user && userInfo && (
                     <div className="profile-grid my-1">
                         <div className="profile-top backg-primary p-2" data-aos="zoom-in">
                             <img
@@ -37,41 +36,41 @@ function ProfileScreen({ history }) {
                                 alt=""
                             />
                             <h1 className="large">{userInfo.name}</h1>
-                            <p className="lead">{designation}{company && <span> at {company}</span>}</p>
-                            <p>{location}</p>
+                            <p className="lead">{user.designation}{user.company && <span> at {user.company}</span>}</p>
+                            <p>{user.location}</p>
                             <div className="icons my-1">
-                                {website && (
-                                    <Link to={website} target="_blank" rel="noopener noreferrer">
+                                {user.website && (
+                                    <Link to={user.website} target="_blank" rel="noopener noreferrer">
                                         <i className="fas fa-globe fa-2x"></i>
                                     </Link>
                                 )}
 
-                                {social && social.twitter && (
-                                    <Link to={social.twitter} target="_blank" rel="noopener noreferrer">
+                                {user.social && user.social.twitter && (
+                                    <Link to={user.social.twitter} target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-twitter fa-2x"></i>
                                     </Link>
                                 )}
 
-                                {social && social.facebook && (
-                                    <Link to={social.facebook} target="_blank" rel="noopener noreferrer">
+                                {user.social && user.social.facebook && (
+                                    <Link to={user.social.facebook} target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-facebook fa-2x"></i>
                                     </Link>
                                 )}
 
-                                {social && social.linkedin && (
-                                    <Link to={social.linkedin} target="_blank" rel="noopener noreferrer">
+                                {user.social && user.social.linkedin && (
+                                    <Link to={user.social.linkedin} target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-linkedin fa-2x"></i>
                                     </Link>
                                 )}
 
-                                {social && social.youtube && (
-                                    <Link to={social.youtube} target="_blank" rel="noopener noreferrer">
+                                {user.social && user.social.youtube && (
+                                    <Link to={user.social.youtube} target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-youtube fa-2x"></i>
                                     </Link>
                                 )}
 
-                                {social && social.instagram && (
-                                    <Link to={social.instagram} target="_blank" rel="noopener noreferrer">
+                                {user.social && user.social.instagram && (
+                                    <Link to={user.social.instagram} target="_blank" rel="noopener noreferrer">
                                         <i className="fab fa-instagram fa-2x"></i>
                                     </Link>
                                 )}
@@ -81,12 +80,12 @@ function ProfileScreen({ history }) {
                         <div className="profile-about bg-light p-2" data-aos="fade-up">
                             <h2 className="text-primar" style={{ color: "#17a2b8" }}>{userInfo.name.trim().split(' ')[0]}'s Bio</h2>
                             <p>
-                                {bio}
+                                {user.bio}
                             </p>
                             <div className="line"></div>
                             <h2 className="text-primar">Skill Set</h2>
                             <div className="skills">
-                                {skills && skills.map((skill, index) => (
+                                {user.skills && user.skills.map((skill, index) => (
                                     <div className="p-1" key={index}><i className="fa fa-check"></i> {skill}</div>
                                 ))}
                             </div>
@@ -94,8 +93,8 @@ function ProfileScreen({ history }) {
 
                         <div className="profile-exp bg-white p-2" data-aos="fade-right">
                             <h2 className="text-primar">Experience</h2>
-                            {experience && experience.length > 0 ? (
-                                experience.map(exp => (
+                            {user.experience && user.experience.length > 0 ? (
+                                user.experience.map(exp => (
                                     <div key={exp._id}>
                                         <h3 className="text-dark">{exp.company}</h3>
                                         <p><Moment format='YYYY/MM/DD'>{exp.from}</Moment> - {
@@ -112,8 +111,8 @@ function ProfileScreen({ history }) {
 
                         <div className="profile-edu bg-white p-2" data-aos="fade-left">
                             <h2 className="text-primar">Education</h2>
-                            {education && education.length > 0 ? (
-                                education.map(education => (
+                            {user.education && user.education.length > 0 ? (
+                                user.education.map(education => (
                                     <div key={education._id}>
                                         <h3 className="text-primary">{education.school}</h3>
                                         <p><Moment format='YYYY/MM/DD'>{education.from}</Moment> - {
