@@ -254,3 +254,6 @@ geckodriver.log
 # Setup
 setup
 
+# Config
+config.py
+
