@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/mindspark/static/css/main.97b7fe9b.chunk.css",
+    "main.js": "/mindspark/static/js/main.2be72eb1.chunk.js",
+    "main.js.map": "/mindspark/static/js/main.2be72eb1.chunk.js.map",
+    "runtime-main.js": "/mindspark/static/js/runtime-main.f7332ac2.js",
+    "runtime-main.js.map": "/mindspark/static/js/runtime-main.f7332ac2.js.map",
+    "static/css/2.d565e0ea.chunk.css": "/mindspark/static/css/2.d565e0ea.chunk.css",
+    "static/js/2.e655377f.chunk.js": "/mindspark/static/js/2.e655377f.chunk.js",
+    "static/js/2.e655377f.chunk.js.map": "/mindspark/static/js/2.e655377f.chunk.js.map",
+    "index.html": "/mindspark/index.html",
+    "static/css/2.d565e0ea.chunk.css.map": "/mindspark/static/css/2.d565e0ea.chunk.css.map",
+    "static/css/main.97b7fe9b.chunk.css.map": "/mindspark/static/css/main.97b7fe9b.chunk.css.map",
+    "static/js/2.e655377f.chunk.js.LICENSE.txt": "/mindspark/static/js/2.e655377f.chunk.js.LICENSE.txt",
+    "static/media/log.svg": "/mindspark/static/media/log.f68e5b1f.svg",
+    "static/media/register.svg": "/mindspark/static/media/register.1f9fb1c1.svg",
+    "static/media/spinner.8be0a374.gif": "/mindspark/static/media/spinner.8be0a374.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f7332ac2.js",
+    "static/css/2.d565e0ea.chunk.css",
+    "static/js/2.e655377f.chunk.js",
+    "static/css/main.97b7fe9b.chunk.css",
+    "static/js/main.2be72eb1.chunk.js"
+  ]
+}
