@@ -9,10 +9,11 @@ import AddEducation from './screens/AddEducation'
 import AddExperience from './screens/AddExperience'
 import ChatScreen from './screens/ChatScreen'
 import DefaultScreen from './screens/template'
+// basename={process.env.PUBLIC_URL}
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Route exact path='/' component={HomeScreen} />
       <Route exact path='/try' component={DefaultScreen} />
       <Route exact path='/dashboard' component={Dashboard} />

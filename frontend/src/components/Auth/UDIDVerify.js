@@ -18,8 +18,8 @@ function UDIDVerify(props) {
             }
         }
 
-        const { data } = await axios.post('/verifyUDID/', { aadhaar, indianState, district }, config)
-        dispatch(setUdidStatus(data.check))
+        // const { data } = await axios.post('/verifyUDID/', { aadhaar, indianState, district }, config)
+        // dispatch(setUdidStatus(data.check))
         dispatch(setUdidStatus(true))
     }
 
