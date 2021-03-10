@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
-from .config import DATABASE
+# from .config import DATABASE
+from .config_dev import DATABASE_DEV
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,10 +87,10 @@ ASGI_APPLICATION = 'mindspark_api.asgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': DATABASE,
+    'default': DATABASE_DEV,
     }
 
-CONN_MAX_AGE = 240
+# CONN_MAX_AGE = 240
 
 
 
