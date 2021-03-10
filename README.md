@@ -11,7 +11,7 @@
 - `npn install`
 - `npm start`
 
-#### cd to the backend folder and run the following commands to start the django server at http://localhost:3000 -
+#### cd to the backend folder and run the following commands to start the django server at http://localhost:8000 -
 - `pip install virtual env`
 - `virtualenv env`
 - `env\Scripts\activate`
