@@ -16,7 +16,7 @@
 - `pip install virtual env`
 - `virtualenv env`
 - `env\Scripts\activate`
-- `pip install .\face_recog_dlib_file-master\dlib-19.19.0-cp38-cp38-win_amd64.whl`
+- `pip install .\Dlib-main\dlib-19.22.99-cp37-cp37m-win_amd64.whl`
 - `pip install -r requirements.txt`
 - `cd src`
 - `python manage.py makemigrations`
