@@ -90,15 +90,15 @@ class PersonDetail(models.Model):
     location = models.CharField(max_length=200, blank=True, null=True)
     designation = models.CharField(max_length=200, blank=True, null=True)
     skills = ArrayField(models.CharField(
-        max_length=200, blank=True, null=True), blank=True, null=True)
+        max_length=200, blank=True, null=True), blank=True, null=True, default=list)
     disablity = ArrayField(models.CharField(
-        max_length=200, blank=True, null=True), blank=True, null=True)
+        max_length=200, blank=True, null=True), blank=True, null=True, default=list)
     bio = models.TextField(blank=True, null=True)
     github = models.CharField(max_length=200, blank=True, null=True)
     experience = ArrayField(models.JSONField(
-        blank=True, null=True), blank=True, null=True)
+        blank=True, null=True), blank=True, null=True, default=list)
     education = ArrayField(models.JSONField(
-        blank=True, null=True), blank=True, null=True)
+        blank=True, null=True), blank=True, null=True, default=list)
     social = models.JSONField(blank=True, null=True)
     UDID = models.CharField(max_length=200, blank=True, null=True)
 
